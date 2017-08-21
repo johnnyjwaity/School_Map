@@ -19,7 +19,7 @@ public class MarkerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         var fwd = Camera.main.transform.forward;
-        fwd.y = 0.0f;
+        ///fwd.y = 0.0f;
         //transform.LookAt();
         transform.rotation = Quaternion.LookRotation(fwd);
     }

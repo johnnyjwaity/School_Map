@@ -154,12 +154,12 @@ TextMesh:
   m_GameObject: {fileID: 1249330447069286}
   m_Text: 144
   m_OffsetZ: 0
-  m_CharacterSize: 1.22
+  m_CharacterSize: 4.63
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 28.75
-  m_FontSize: 65
+  m_FontSize: 500
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -188,3 +188,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0047608ecb8ac634fbf010f0bdf8e186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDistance: 0

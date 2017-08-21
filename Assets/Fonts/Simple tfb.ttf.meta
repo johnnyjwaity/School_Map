@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 671184f83a0974e4a87a5e5f298cb5ac
+timeCreated: 1503260968
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Simple tfb
+  fontNames:
+  - Simple tfb
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
