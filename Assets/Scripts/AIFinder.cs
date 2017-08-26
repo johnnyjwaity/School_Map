@@ -31,7 +31,7 @@ public class AIFinder : MonoBehaviour {
             transform.position += dir*speed*Time.deltaTime;
 
 
-            if (Vector3.Distance(pth.vectorPath[currentWaypoint], transform.position) < 0.01)
+            if (Vector3.Distance(pth.vectorPath[currentWaypoint], transform.position) < 0.5)
             {
                 currentWaypoint++;
             }
