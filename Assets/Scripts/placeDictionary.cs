@@ -9,6 +9,10 @@ public class placeDictionary : MonoBehaviour {
     private Dictionary<string, GameObject> firstFloorRoomsDict;
     private List<string> firstRoomNames;
 
+	public GameObject[] secondFloorRooms;
+	private Dictionary<string, GameObject> secondFloorRoomsDict;
+	private List<string> secondRoomNames;
+
     public GameObject[] usableFirstFloorStairs;
 
     public GameObject[] usableFirstFloorElevators;
@@ -30,6 +34,11 @@ public class placeDictionary : MonoBehaviour {
     void Start () {
         firstFloorRoomsDict = new Dictionary<string, GameObject>();
         firstRoomNames = new List<string>();
+
+		secondFloorRoomsDict = new Dictionary<string, GameObject>();
+		secondRoomNames = new List<string>();
+
+
         mainCamera = FindObjectOfType<CameraController>();
 
         for (int i =0; i<firstFloorRooms.Length; i++)
@@ -41,6 +50,25 @@ public class placeDictionary : MonoBehaviour {
                 Debug.Log("Went Through");
             }
         }
+
+		for (int i =0; i<secondFloorRooms.Length; i++)
+		{
+			bool hasDuplicate = false;
+			if(secondFloorRooms[i] != null)
+			{
+				foreach (string registered in secondRoomNames) {
+					if (secondFloorRooms [i].name == registered) {
+						hasDuplicate = true;
+					}
+				}
+				if (!hasDuplicate) {
+					
+					secondFloorRoomsDict.Add (secondFloorRooms [i].name, secondFloorRooms [i]);
+					secondRoomNames.Add (secondFloorRooms [i].name);
+					Debug.Log ("Went Through");
+				}
+			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -61,6 +89,16 @@ public class placeDictionary : MonoBehaviour {
                     options.options.Add(o);
                 }
             }
+
+			foreach(string room2 in secondRoomNames)
+			{
+				if (room2.ToLower().Contains(inputBox.text.ToLower()))
+				{
+					Dropdown.OptionData o = new Dropdown.OptionData();
+					o.text = room2;
+					options.options.Add(o);
+				}
+			}
             //options.ClearOptions(); 
         }
         dropdownLabel.text = options.options[options.value].text;
@@ -88,6 +126,15 @@ public class placeDictionary : MonoBehaviour {
                     options2.options.Add(o2);
                 }
             }
+			foreach(string room2 in secondRoomNames)
+			{
+				if (room2.ToLower().Contains(inputBox2.text.ToLower()))
+				{
+					Dropdown.OptionData o2 = new Dropdown.OptionData();
+					o2.text = room2;
+					options2.options.Add(o2);
+				}
+			}
             //options.ClearOptions(); 
         }
         dropdownLabel2.text = options2.options[options2.value].text;
