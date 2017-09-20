@@ -149,10 +149,28 @@ public class placeDictionary : MonoBehaviour {
 
     public void Navigate()
     {
+		Dictionary <string, GameObject> containsOption1;
+		Dictionary <string, GameObject> containsOption2;
+
+		if (firstFloorRoomsDict.ContainsKey (options2.options [options2.value].text)) {
+			containsOption2 = firstFloorRoomsDict;
+		} else {
+			containsOption2 = secondFloorRoomsDict;
+		}
+
+		if (firstFloorRoomsDict.ContainsKey (options.options [options.value].text)) {
+			containsOption1 = firstFloorRoomsDict;
+		} else {
+			containsOption1 = secondFloorRoomsDict;
+		}
+
+
         if(options2.value !=0 && options.value != 0)
         {
-            GameObject tkr = Instantiate(tracker, firstFloorRoomsDict[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
-            tkr.GetComponent<AIFinder>().target = firstFloorRoomsDict[options.options[options.value].text].transform;
+			GameObject tkr = Instantiate(tracker, containsOption2[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
+			tkr.GetComponent<AIFinder>().target = containsOption1[options.options[options.value].text].transform;
+			//GameObject tkr = Instantiate(tracker, firstFloorRoomsDict[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
+			//tkr.GetComponent<AIFinder>().target = firstFloorRoomsDict[options.options[options.value].text].transform;
             mainCamera.locked = true;
             mainCamera.tracker = tkr;
 

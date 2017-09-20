@@ -10,10 +10,15 @@ public class AIFinder : MonoBehaviour {
     private int currentWaypoint;
     private bool finished;
     public float speed;
+
+	private Rigidbody myRigid;
 	// Use this for initialization
 	void Start () {
+		AstarPath.active.Scan ();
+		Debug.Log (target.name);
         seeker = GetComponent<Seeker>();
         seeker.StartPath(transform.position, target.position, OnPathComplete);
+		myRigid = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -28,8 +33,8 @@ public class AIFinder : MonoBehaviour {
 
             Vector3 dir = (pth.vectorPath[currentWaypoint] - transform.position).normalized;
 
-            transform.position += dir*speed*Time.deltaTime;
-
+            //transform.position += dir*speed*Time.deltaTime;
+			myRigid.velocity = dir*speed*Time.deltaTime;
 
             if (Vector3.Distance(pth.vectorPath[currentWaypoint], transform.position) < 0.5)
             {

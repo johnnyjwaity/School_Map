@@ -55,6 +55,9 @@
      <Compile Include="Assets\Scripts\AIFinder.cs" />
      <Compile Include="Assets\Scripts\Camera\TouchCamera.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\floor1.cs" />
+     <Compile Include="Assets\Scripts\floor2.cs" />
+     <Compile Include="Assets\Scripts\floorManager.cs" />
      <Compile Include="Assets\Scripts\MarkerController.cs" />
      <Compile Include="Assets\Scripts\placeDictionary.cs" />
      <Compile Include="Assets\Scripts\SphereController.cs" />
@@ -82,7 +85,7 @@
      <None Include="Assets\Plugins\AstarPathfindingProject\link.xml" />
      <None Include="Assets\HolyShift\Shaders\FXWaterLowpoly.shader" />
  <Reference Include="Facebook.Unity.Settings">
- <HintPath>/Users/Guest/Documents/GitHub/School_Map/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ <HintPath>/Users/JohnnyWaity/GitHub/School_Map/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -106,7 +109,7 @@
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>/Users/Guest/Documents/GitHub/School_Map/Assets/Plugins/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <HintPath>/Users/JohnnyWaity/GitHub/School_Map/Assets/Plugins/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
