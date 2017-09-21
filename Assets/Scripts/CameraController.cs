@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void LateUpdate () {
         if (locked)
         {
             Vector3 tagetPos = tracker.transform.position;

@@ -163,15 +163,18 @@
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
       <HintPath>Assets\Plugins\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="School_Map.csproj">
-      <Project>{ECC5CAA3-59A3-EFDA-84CC-D5F9DCEE21D7}</Project>
-      <Name>School_Map</Name>
-    </ProjectReference>
     <ProjectReference Include="School_Map.Plugins.csproj">
       <Project>{5630742B-1E05-AD6C-5763-C849D688BABB}</Project>
       <Name>School_Map.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="School_Map.csproj">
+      <Project>{ECC5CAA3-59A3-EFDA-84CC-D5F9DCEE21D7}</Project>
+      <Name>School_Map</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

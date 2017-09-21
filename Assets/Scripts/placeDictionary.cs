@@ -152,16 +152,24 @@ public class placeDictionary : MonoBehaviour {
 		Dictionary <string, GameObject> containsOption1;
 		Dictionary <string, GameObject> containsOption2;
 
+
+        int startFloor = 0;
+        int endFloor = 0;
+
 		if (firstFloorRoomsDict.ContainsKey (options2.options [options2.value].text)) {
 			containsOption2 = firstFloorRoomsDict;
+            startFloor = 1;
 		} else {
 			containsOption2 = secondFloorRoomsDict;
+            startFloor = 2;
 		}
 
 		if (firstFloorRoomsDict.ContainsKey (options.options [options.value].text)) {
 			containsOption1 = firstFloorRoomsDict;
+            endFloor = 1;
 		} else {
 			containsOption1 = secondFloorRoomsDict;
+            endFloor = 2;
 		}
 
 
@@ -169,8 +177,21 @@ public class placeDictionary : MonoBehaviour {
         {
 			GameObject tkr = Instantiate(tracker, containsOption2[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
 			tkr.GetComponent<AIFinder>().target = containsOption1[options.options[options.value].text].transform;
+            tkr.GetComponent<AIFinder>().startFloor = startFloor;
 			//GameObject tkr = Instantiate(tracker, firstFloorRoomsDict[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
 			//tkr.GetComponent<AIFinder>().target = firstFloorRoomsDict[options.options[options.value].text].transform;
+            if(startFloor != endFloor)
+            {
+                if(startFloor == 1)
+                {
+                    tkr.GetComponent<AIFinder>().oneToTwo = true;
+                }
+                else{
+                    tkr.GetComponent<AIFinder>().twoToOne = true;
+
+                }
+            }
+
             mainCamera.locked = true;
             mainCamera.tracker = tkr;
 
