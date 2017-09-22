@@ -30,6 +30,8 @@ public class placeDictionary : MonoBehaviour {
     public GameObject tracker;
 
     private CameraController mainCamera;
+
+    private floorManager fm;
     // Use this for initialization
     void Start () {
         firstFloorRoomsDict = new Dictionary<string, GameObject>();
@@ -37,6 +39,8 @@ public class placeDictionary : MonoBehaviour {
 
 		secondFloorRoomsDict = new Dictionary<string, GameObject>();
 		secondRoomNames = new List<string>();
+
+        fm = GetComponent<floorManager>();
 
 
         mainCamera = FindObjectOfType<CameraController>();
@@ -147,56 +151,85 @@ public class placeDictionary : MonoBehaviour {
         previousInput2 = inputBox2.text;
     }
 
-    public void Navigate()
+    public void Navigate(GameObject startPos, Transform endPos, bool onFirstFloor)
     {
 		Dictionary <string, GameObject> containsOption1;
 		Dictionary <string, GameObject> containsOption2;
-
-
         int startFloor = 0;
         int endFloor = 0;
-
-		if (firstFloorRoomsDict.ContainsKey (options2.options [options2.value].text)) {
-			containsOption2 = firstFloorRoomsDict;
-            startFloor = 1;
-		} else {
-			containsOption2 = secondFloorRoomsDict;
-            startFloor = 2;
-		}
-
-		if (firstFloorRoomsDict.ContainsKey (options.options [options.value].text)) {
-			containsOption1 = firstFloorRoomsDict;
-            endFloor = 1;
-		} else {
-			containsOption1 = secondFloorRoomsDict;
-            endFloor = 2;
-		}
-
-
-        if(options2.value !=0 && options.value != 0)
+        if (startPos == null || endPos == null)
         {
-			GameObject tkr = Instantiate(tracker, containsOption2[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
-			tkr.GetComponent<AIFinder>().target = containsOption1[options.options[options.value].text].transform;
-            tkr.GetComponent<AIFinder>().startFloor = startFloor;
-			//GameObject tkr = Instantiate(tracker, firstFloorRoomsDict[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
-			//tkr.GetComponent<AIFinder>().target = firstFloorRoomsDict[options.options[options.value].text].transform;
-            if(startFloor != endFloor)
+            if (firstFloorRoomsDict.ContainsKey(options2.options[options2.value].text))
             {
-                if(startFloor == 1)
-                {
-                    tkr.GetComponent<AIFinder>().oneToTwo = true;
-                }
-                else{
-                    tkr.GetComponent<AIFinder>().twoToOne = true;
-
-                }
+                containsOption2 = firstFloorRoomsDict;
+                startFloor = 1;
+            }
+            else
+            {
+                containsOption2 = secondFloorRoomsDict;
+                startFloor = 2;
             }
 
+            if (firstFloorRoomsDict.ContainsKey(options.options[options.value].text))
+            {
+                containsOption1 = firstFloorRoomsDict;
+                endFloor = 1;
+            }
+            else
+            {
+                containsOption1 = secondFloorRoomsDict;
+                endFloor = 2;
+            }
+
+            
+            if (options2.value != 0 && options.value != 0)
+            {
+                GameObject tkr = Instantiate(tracker, containsOption2[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
+                tkr.GetComponent<AIFinder>().target = containsOption1[options.options[options.value].text].transform;
+                tkr.GetComponent<AIFinder>().startFloor = startFloor;
+                //GameObject tkr = Instantiate(tracker, firstFloorRoomsDict[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
+                //tkr.GetComponent<AIFinder>().target = firstFloorRoomsDict[options.options[options.value].text].transform;
+                if (startFloor != endFloor)
+                {
+                    if (startFloor == 1)
+                    {
+                        tkr.GetComponent<AIFinder>().oneToTwo = true;
+                    }
+                    else
+                    {
+                        tkr.GetComponent<AIFinder>().twoToOne = true;
+
+                    }
+                }
+
+                mainCamera.locked = true;
+                mainCamera.tracker = tkr;
+
+
+            }
+        }
+        else
+        {
+
+            if (onFirstFloor)
+            {
+                fm.showFloor2 = false;
+            }
+            else
+            {
+                fm.showFloor2 = true;
+            }
+
+            GameObject tkr = Instantiate(tracker, startPos.transform.position, Quaternion.Euler(Vector3.zero));
+            tkr.GetComponent<AIFinder>().target = endPos.transform;
+            tkr.GetComponent<AIFinder>().startFloor = startFloor;
             mainCamera.locked = true;
             mainCamera.tracker = tkr;
-
-
         }
+
+        
+
+		
     }
 
 
