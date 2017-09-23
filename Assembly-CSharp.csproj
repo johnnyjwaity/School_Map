@@ -58,9 +58,11 @@
      <Compile Include="Assets\Scripts\floor1.cs" />
      <Compile Include="Assets\Scripts\floor2.cs" />
      <Compile Include="Assets\Scripts\floorManager.cs" />
+     <Compile Include="Assets\Scripts\floorTransport.cs" />
      <Compile Include="Assets\Scripts\MarkerController.cs" />
      <Compile Include="Assets\Scripts\placeDictionary.cs" />
      <Compile Include="Assets\Scripts\SphereController.cs" />
+     <Compile Include="Assets\Scripts\stairMap.cs" />
      <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\Navmesh.cginc" />
      <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\CactusPack\Shaders\VertexBlend.shader" />
