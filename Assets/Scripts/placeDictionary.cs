@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class placeDictionary : MonoBehaviour {
 
     public GameObject[] firstFloorRooms;
-    
+
     private Dictionary<string, GameObject> firstFloorRoomsDict;
     private List<string> firstRoomNames;
 
@@ -66,7 +66,7 @@ public class placeDictionary : MonoBehaviour {
 					}
 				}
 				if (!hasDuplicate) {
-					
+
 					secondFloorRoomsDict.Add (secondFloorRooms [i].name, secondFloorRooms [i]);
 					secondRoomNames.Add (secondFloorRooms [i].name);
 					Debug.Log ("Went Through");
@@ -74,7 +74,7 @@ public class placeDictionary : MonoBehaviour {
 			}
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(inputBox.text != "")
@@ -103,7 +103,7 @@ public class placeDictionary : MonoBehaviour {
 					options.options.Add(o);
 				}
 			}
-            //options.ClearOptions(); 
+            //options.ClearOptions();
         }
         dropdownLabel.text = options.options[options.value].text;
 
@@ -139,7 +139,7 @@ public class placeDictionary : MonoBehaviour {
 					options2.options.Add(o2);
 				}
 			}
-            //options.ClearOptions(); 
+            //options.ClearOptions();
         }
         dropdownLabel2.text = options2.options[options2.value].text;
 
@@ -149,6 +149,10 @@ public class placeDictionary : MonoBehaviour {
         }
 
         previousInput2 = inputBox2.text;
+    }
+
+    public void handleNav(){
+      Navigate(null, null, false);
     }
 
     public void Navigate(GameObject startPos, Transform endPos, bool onFirstFloor)
@@ -181,7 +185,7 @@ public class placeDictionary : MonoBehaviour {
                 endFloor = 2;
             }
 
-            
+
             if (options2.value != 0 && options.value != 0)
             {
                 GameObject tkr = Instantiate(tracker, containsOption2[options2.options[options2.value].text].transform.position, Quaternion.Euler(Vector3.zero));
@@ -227,15 +231,12 @@ public class placeDictionary : MonoBehaviour {
             mainCamera.tracker = tkr;
         }
 
-        
 
-		
+
+
     }
 
 
 
 
 }
-
-
-

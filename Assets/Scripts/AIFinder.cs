@@ -22,7 +22,7 @@ public class AIFinder : MonoBehaviour {
 	private Rigidbody myRigid;
 	// Use this for initialization
 	void Start () {
-		AstarPath.active.Scan ();
+		//AstarPath.active.Scan ();
 
         if(oneToTwo || twoToOne)
         {
@@ -57,7 +57,7 @@ public class AIFinder : MonoBehaviour {
                     }
                 }
             }
-            
+
 
             target = closestObject.transform;
 
@@ -73,7 +73,7 @@ public class AIFinder : MonoBehaviour {
         seeker.StartPath(transform.position, target.position, OnPathComplete);
 		myRigid = GetComponent<Rigidbody> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(pth != null && !finished)
