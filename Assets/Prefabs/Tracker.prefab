@@ -142,3 +142,4 @@ MonoBehaviour:
   oneToTwo: 0
   twoToOne: 0
   startFloor: 0
+  elevator: 0

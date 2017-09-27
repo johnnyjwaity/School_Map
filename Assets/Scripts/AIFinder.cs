@@ -71,6 +71,7 @@ public class AIFinder : MonoBehaviour {
 		Debug.Log (target.name);
         seeker = GetComponent<Seeker>();
         seeker.StartPath(transform.position, target.position, OnPathComplete);
+        
 		myRigid = GetComponent<Rigidbody> ();
 	}
 
@@ -92,11 +93,11 @@ public class AIFinder : MonoBehaviour {
                 //Destroy(gameObject);
                 return;
             }
-
+            transform.LookAt(pth.vectorPath[currentWaypoint]);
             Vector3 dir = (pth.vectorPath[currentWaypoint] - transform.position).normalized;
 
             //transform.position += dir*speed*Time.deltaTime;
-			myRigid.velocity = dir*speed*Time.deltaTime;
+            myRigid.velocity = dir * speed * Time.deltaTime;
 
             if (Vector3.Distance(pth.vectorPath[currentWaypoint], transform.position) < 0.5)
             {
