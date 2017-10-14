@@ -23,7 +23,7 @@ public class AIFinder : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//AstarPath.active.Scan ();
-
+        Debug.Log("Hi");
         if(oneToTwo || twoToOne)
         {
             stairMap stairmap = FindObjectOfType<stairMap>();
