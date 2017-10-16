@@ -183,6 +183,7 @@ public class placeDictionary : MonoBehaviour {
             {
                 containsOption1 = secondFloorRoomsDict;
                 endFloor = 2;
+                onFirstFloor = false;
             }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.UI;
 
 public class AIFinder : MonoBehaviour {
     private Seeker seeker;
@@ -20,6 +21,8 @@ public class AIFinder : MonoBehaviour {
 
     private GameObject couterpart;
 	private Rigidbody myRigid;
+
+    private Toggle useElevators;
 	// Use this for initialization
 	void Start () {
 		//AstarPath.active.Scan ();
@@ -30,33 +33,78 @@ public class AIFinder : MonoBehaviour {
             float shortestDistance = 999999999999999;
             GameObject closestObject = null;
             secondaryLocation = target;
-            if(oneToTwo)
+            Toggle[] allToggles = FindObjectsOfType<Toggle>();
+            for(int i=0; i<allToggles.Length; i++)
             {
-                foreach (KeyValuePair<GameObject, GameObject> entry in stairmap.lowerToUpper)
+                if(allToggles[i].gameObject.name == "Elevator Toggle")
                 {
-                    float distance = Vector3.Distance(transform.position, entry.Key.transform.position);
-                    if (shortestDistance > distance)
+                    useElevators = allToggles[i];
+                    break;
+                }
+            }
+            elevator = useElevators.isOn;
+            if (!elevator)
+            {
+                if (oneToTwo)
+                {
+                    foreach (KeyValuePair<GameObject, GameObject> entry in stairmap.lowerToUpper)
                     {
-                        shortestDistance = distance;
-                        closestObject = entry.Key;
-                        couterpart = entry.Value;
+                        float distance = Vector3.Distance(transform.position, entry.Key.transform.position);
+                        if (shortestDistance > distance)
+                        {
+                            shortestDistance = distance;
+                            closestObject = entry.Key;
+                            couterpart = entry.Value;
+                        }
                     }
                 }
+                else
+                {
+                    foreach (KeyValuePair<GameObject, GameObject> entry in stairmap.upperToLower)
+                    {
+                        Debug.Log("", entry.Key);
+                        float distance = Vector3.Distance(transform.position, entry.Key.transform.position);
+                        if (shortestDistance > distance)
+                        {
+                            shortestDistance = distance;
+                            closestObject = entry.Key;
+                            couterpart = entry.Value;
+                        }
+                    }
+                }
+
             }
             else
             {
-                foreach (KeyValuePair<GameObject, GameObject> entry in stairmap.upperToLower)
+                if (oneToTwo)
                 {
-                    Debug.Log("", entry.Key);
-                    float distance = Vector3.Distance(transform.position, entry.Key.transform.position);
-                    if (shortestDistance > distance)
+                    foreach (KeyValuePair<GameObject, GameObject> entry in stairmap.elevatorLowerToUpper)
                     {
-                        shortestDistance = distance;
-                        closestObject = entry.Key;
-                        couterpart = entry.Value;
+                        float distance = Vector3.Distance(transform.position, entry.Key.transform.position);
+                        if (shortestDistance > distance)
+                        {
+                            shortestDistance = distance;
+                            closestObject = entry.Key;
+                            couterpart = entry.Value;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (KeyValuePair<GameObject, GameObject> entry in stairmap.elevatorUpperToLower)
+                    {
+                        Debug.Log("", entry.Key);
+                        float distance = Vector3.Distance(transform.position, entry.Key.transform.position);
+                        if (shortestDistance > distance)
+                        {
+                            shortestDistance = distance;
+                            closestObject = entry.Key;
+                            couterpart = entry.Value;
+                        }
                     }
                 }
             }
+            
 
 
             target = closestObject.transform;
@@ -108,9 +156,13 @@ public class AIFinder : MonoBehaviour {
         {
             Debug.Log("Got Here");
             myRigid.velocity = Vector3.zero;
-            if (oneToTwo || twoToOne)
+            if (oneToTwo)
             {
-                FindObjectOfType<placeDictionary>().Navigate(couterpart, secondaryLocation, twoToOne);
+                FindObjectOfType<placeDictionary>().Navigate(couterpart, secondaryLocation, false);
+            }
+            else
+            {
+                FindObjectOfType<placeDictionary>().Navigate(couterpart, secondaryLocation, true);
             }
             Destroy(gameObject);
         }
