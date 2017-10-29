@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio for Mac
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School_Map.Plugins", "School_Map.Plugins.csproj", "{5630742B-1E05-AD6C-5763-C849D688BABB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School_Map", "School_Map.csproj", "{ECC5CAA3-59A3-EFDA-84CC-D5F9DCEE21D7}"

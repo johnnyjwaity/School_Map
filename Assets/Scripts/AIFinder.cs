@@ -169,6 +169,13 @@ public class AIFinder : MonoBehaviour {
 	}
     public void OnPathComplete(Path p)
     {
+        Vector3[] vertex = { };
+        for (int i = 0; i < p.vectorPath.Count-1; i++){
+            Debug.Log(i);
+            vertex[i] = p.vectorPath[i];
+        }
+        LineRenderer lr = FindObjectOfType<LineRenderer>();
+        lr.SetPositions(vertex);
         pth = p;
         currentWaypoint = 0;
     }

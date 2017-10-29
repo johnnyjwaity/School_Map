@@ -17,7 +17,7 @@ public class placeDictionary : MonoBehaviour {
 
     public GameObject[] usableFirstFloorElevators;
 
-    public Text inputBox;
+    public Text inputBox, enterBox;
     public Dropdown options;
     public Text dropdownLabel;
     private string previousInput = "abdjksabfck";
@@ -77,6 +77,18 @@ public class placeDictionary : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if(enterBox.text != ""){
+
+
+        }
+
+
+
+
+
+
+
+
 		if(inputBox.text != "")
         {
             options.ClearOptions();
