@@ -18,6 +18,9 @@ public class placeDictionary : MonoBehaviour {
     public GameObject[] usableFirstFloorElevators;
 
     public Text inputBox, enterBox;
+    private string enterPrev;
+    public GameObject listView;
+    public GameObject buttonPrefab;
     public Dropdown options;
     public Text dropdownLabel;
     private string previousInput = "abdjksabfck";
@@ -77,7 +80,39 @@ public class placeDictionary : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if(enterBox.text != ""){
+        if(enterBox.text != enterPrev){
+            foreach(Transform child in listView.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+
+
+            foreach (string room in firstRoomNames)
+            {
+                if (room.ToLower().Contains(enterBox.text))
+                {
+                    GameObject newButton = Instantiate(buttonPrefab);
+                    newButton.transform.SetParent(listView.transform);
+                    newButton.
+                    //newButton.transform.parent = listView.transform;
+                    newButton.AddComponent<ContentSizeFitter>();
+                    
+
+                }
+            }
+
+            foreach (string room2 in secondRoomNames)
+            {
+                if (room2.ToLower().Contains(enterBox.text))
+                {
+                    GameObject newButton = Instantiate(buttonPrefab);
+                    newButton.transform.parent = listView.transform;
+                    newButton.AddComponent<ContentSizeFitter>();
+
+                }
+            }
+
 
 
         }
@@ -161,6 +196,8 @@ public class placeDictionary : MonoBehaviour {
         }
 
         previousInput2 = inputBox2.text;
+
+        enterPrev = enterBox.text;
     }
 
     public void handleNav(){
