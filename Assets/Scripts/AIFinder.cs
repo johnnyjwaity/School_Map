@@ -11,7 +11,7 @@ public class AIFinder : MonoBehaviour {
     private int currentWaypoint;
     private bool finished;
     public float speed;
-
+    private float tempSpeed;
     public bool oneToTwo;
     public bool twoToOne;
     public int startFloor;
@@ -25,6 +25,7 @@ public class AIFinder : MonoBehaviour {
     private Toggle useElevators;
 	// Use this for initialization
 	void Start () {
+        tempSpeed = speed;
 		//AstarPath.active.Scan ();
         Debug.Log("Hi");
         if(oneToTwo || twoToOne)
@@ -145,7 +146,7 @@ public class AIFinder : MonoBehaviour {
             Vector3 dir = (pth.vectorPath[currentWaypoint] - transform.position).normalized;
 
             //transform.position += dir*speed*Time.deltaTime;
-            myRigid.velocity = dir * speed * Time.deltaTime;
+            myRigid.velocity = dir * tempSpeed * Time.deltaTime;
 
             if (Vector3.Distance(pth.vectorPath[currentWaypoint], transform.position) < 0.2)
             {
@@ -160,7 +161,7 @@ public class AIFinder : MonoBehaviour {
             {
                 FindObjectOfType<placeDictionary>().Navigate(couterpart, secondaryLocation, false);
             }
-            else
+            else if(twoToOne)
             {
                 FindObjectOfType<placeDictionary>().Navigate(couterpart, secondaryLocation, true);
             }
@@ -169,17 +170,40 @@ public class AIFinder : MonoBehaviour {
 	}
     public void OnPathComplete(Path p)
     {
-        Vector3[] vertex = { };
-        for (int i = 0; i < p.vectorPath.Count-1; i++){
-            Debug.Log(i);
-            vertex[i] = p.vectorPath[i];
-        }
-        LineRenderer lr = FindObjectOfType<LineRenderer>();
-        lr.SetPositions(vertex);
+        //Vector3[] vertex = { };
+        //for (int i = 0; i < p.vectorPath.Count-1; i++){
+        //    Debug.Log(i);
+        //    vertex[i] = p.vectorPath[i];
+        //}
+        //LineRenderer lr = FindObjectOfType<LineRenderer>();
+        //lr.SetPositions(vertex);
         pth = p;
         currentWaypoint = 0;
+        
+        FindObjectOfType<cubeManager>().displayCubes(p.vectorPath);
     }
 
+    public void pause()
+    {
+        if(tempSpeed == 0)
+        {
+            tempSpeed = speed;
+        }
+        else
+        {
+            tempSpeed = 0;
+        }
+    }
+
+    public void changeSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+        if(tempSpeed != 0)
+        {
+            tempSpeed = speed;
+        }
+        
+    }
     /*
     private void createNewTracker()
     {

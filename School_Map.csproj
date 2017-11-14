@@ -241,6 +241,9 @@
     <Compile Include="Assets\Scripts\AIFinder.cs" />
     <Compile Include="Assets\Scripts\Camera\TouchCamera.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\ControlManager.cs" />
+    <Compile Include="Assets\Scripts\cubeManager.cs" />
+    <Compile Include="Assets\Scripts\CubeStretcher.cs" />
     <Compile Include="Assets\Scripts\floor1.cs" />
     <Compile Include="Assets\Scripts\floor2.cs" />
     <Compile Include="Assets\Scripts\floorManager.cs" />
@@ -249,6 +252,7 @@
     <Compile Include="Assets\Scripts\placeDictionary.cs" />
     <Compile Include="Assets\Scripts\SphereController.cs" />
     <Compile Include="Assets\Scripts\stairMap.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\Navmesh.cginc" />

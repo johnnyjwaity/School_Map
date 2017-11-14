@@ -81,37 +81,7 @@ public class placeDictionary : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(enterBox.text != enterPrev){
-            foreach(Transform child in listView.transform)
-            {
-                Destroy(child.gameObject);
-            }
-
-
-
-            foreach (string room in firstRoomNames)
-            {
-                if (room.ToLower().Contains(enterBox.text))
-                {
-                    GameObject newButton = Instantiate(buttonPrefab);
-                    newButton.transform.SetParent(listView.transform);
-                    newButton.
-                    //newButton.transform.parent = listView.transform;
-                    newButton.AddComponent<ContentSizeFitter>();
-                    
-
-                }
-            }
-
-            foreach (string room2 in secondRoomNames)
-            {
-                if (room2.ToLower().Contains(enterBox.text))
-                {
-                    GameObject newButton = Instantiate(buttonPrefab);
-                    newButton.transform.parent = listView.transform;
-                    newButton.AddComponent<ContentSizeFitter>();
-
-                }
-            }
+            
 
 
 
@@ -128,7 +98,7 @@ public class placeDictionary : MonoBehaviour {
         {
             options.ClearOptions();
             Dropdown.OptionData l = new Dropdown.OptionData();
-            l.text = "...";
+            l.text = "Select Room";
             options.options.Add(l);
             //Dropdown.OptionDataList od = new Dropdown.OptionDataList();
             foreach(string room in firstRoomNames)
@@ -165,7 +135,7 @@ public class placeDictionary : MonoBehaviour {
         {
             options2.ClearOptions();
             Dropdown.OptionData l2 = new Dropdown.OptionData();
-            l2.text = "...";
+            l2.text = "Select Room";
             options2.options.Add(l2);
             //Dropdown.OptionDataList od = new Dropdown.OptionDataList();
             foreach (string room in firstRoomNames)
@@ -202,6 +172,7 @@ public class placeDictionary : MonoBehaviour {
 
     public void handleNav(){
       Navigate(null, null, false);
+        FindObjectOfType<UIManager>().startCorse();
     }
 
     public void Navigate(GameObject startPos, Transform endPos, bool onFirstFloor)
