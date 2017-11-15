@@ -22,11 +22,12 @@ public class floorManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(pastFloorWas1 != !showFloor2)
-        {
-            changeDropdown();
-            pastFloorWas1 = !pastFloorWas1;
-        }
+        //if(pastFloorWas1 != !showFloor2)
+        //{
+        //    changeDropdown();
+        //    pastFloorWas1 = !pastFloorWas1;
+        //}
+
 
 		if (!showFloor2) {
 			foreach (floor2 obj in floor2Obj) {

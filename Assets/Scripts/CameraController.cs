@@ -31,10 +31,13 @@ public class CameraController : MonoBehaviour {
 
     private bool wasZoomingLastFrame; // Touch mode only
     private Vector2[] lastZoomPositions; // Touch mode only
+
+    private floorManager fm;
                                          
     void Start () {
         defaultRotation = transform.rotation;
         cam = GetComponent<Camera>();
+        fm = FindObjectOfType<floorManager>();
     }
 	
 	// Update is called once per frame
@@ -70,7 +73,14 @@ public class CameraController : MonoBehaviour {
         }
         else
         {
-            transform.rotation = defaultRotation;
+            if (!fm.showFloor2){
+                transform.position = new Vector3(transform.position.x, 16,transform.position.z);
+            }
+            else{
+                transform.position = new Vector3(transform.position.x, 26, transform.position.z);
+            }
+
+            //transform.rotation = defaultRotation;
         }
 
         HandleTouch();

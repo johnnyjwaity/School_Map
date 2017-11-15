@@ -230,6 +230,15 @@ public class placeDictionary : MonoBehaviour {
                 mainCamera.locked = true;
                 mainCamera.tracker = tkr;
 
+                if (startFloor == 1)
+                {
+                    fm.showFloor2 = false;
+                }
+                else
+                {
+                    fm.showFloor2 = true;
+                }
+
 
             }
         }

@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour {
     public void closeNavPanel()
     {
         NavPanel.SetBool("NavOpen", false);
+        //buttonHolder.SetActive(true);
         
     }
     public void startCorse()
