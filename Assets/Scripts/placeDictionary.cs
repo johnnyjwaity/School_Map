@@ -35,6 +35,8 @@ public class placeDictionary : MonoBehaviour {
     private CameraController mainCamera;
 
     private floorManager fm;
+
+    public Text errorMessage;
     // Use this for initialization
     void Start () {
         firstFloorRoomsDict = new Dictionary<string, GameObject>();
@@ -171,8 +173,18 @@ public class placeDictionary : MonoBehaviour {
     }
 
     public void handleNav(){
-      Navigate(null, null, false);
-        FindObjectOfType<UIManager>().startCorse();
+        if(options.value == 0 || options2.value == 0)
+        {
+            errorMessage.gameObject.SetActive(true);
+        }
+        else
+        {
+            errorMessage.gameObject.SetActive(false);
+            Navigate(null, null, false);
+            FindObjectOfType<UIManager>().startCorse();
+
+        }
+      
     }
 
     public void Navigate(GameObject startPos, Transform endPos, bool onFirstFloor)

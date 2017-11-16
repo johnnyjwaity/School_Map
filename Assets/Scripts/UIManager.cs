@@ -30,6 +30,12 @@ public class UIManager : MonoBehaviour {
         //buttonHolder.SetActive(true);
         
     }
+    public void playerCloseNavPanel()
+    {
+        NavPanel.SetBool("NavOpen", false);
+        buttonHolder.SetActive(true);
+
+    }
     public void startCorse()
     {
         if (NavPanel.GetBool("NavOpen"))

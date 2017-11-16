@@ -6,7 +6,12 @@ using UnityEngine.UI;
 public class ControlManager : MonoBehaviour {
     private AIFinder player;
     public Slider speedSlider;
-	// Use this for initialization
+
+    public Sprite pauseSprt;
+    public Sprite playSprt;
+
+    public Image playButton;
+	// Use this for initializationw
 	void Start () {
 		
 	}
@@ -32,6 +37,15 @@ public class ControlManager : MonoBehaviour {
     
     public void pause()
     {
+        if(playButton.sprite == pauseSprt)
+        {
+            playButton.sprite = playSprt;
+        }
+        else
+        {
+            playButton.sprite = pauseSprt;
+        }
+
         player.pause();
     }
 
