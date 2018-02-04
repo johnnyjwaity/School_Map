@@ -13,7 +13,7 @@ public class MarkerController : MonoBehaviour {
         tm = GetComponent<TextMesh>();
         //Camera = FindObjectOfType<Camera>().gameObject;
 
-        tm.text = transform.root.name;
+        tm.text = transform.parent.parent.name;
 	}
 	
 	// Update is called once per frame

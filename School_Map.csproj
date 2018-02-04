@@ -226,9 +226,6 @@
     <Reference Include="Facebook.Unity.Settings">
       <HintPath>Library\FacebookSDK\Facebook.Unity.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-      <HintPath>Assets\Plugins\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="School_Map.Plugins.csproj">
@@ -237,38 +234,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\HolyShift\Scripts\CheckForStandardAssets.cs" />
-    <Compile Include="Assets\Scripts\AIFinder.cs" />
-    <Compile Include="Assets\Scripts\Camera\TouchCamera.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\ControlManager.cs" />
-    <Compile Include="Assets\Scripts\cubeManager.cs" />
-    <Compile Include="Assets\Scripts\CubeStretcher.cs" />
+    <Compile Include="Assets\Art\HolyShift\Scripts\CheckForStandardAssets.cs" />
     <Compile Include="Assets\Scripts\floor1.cs" />
     <Compile Include="Assets\Scripts\floor2.cs" />
-    <Compile Include="Assets\Scripts\floorManager.cs" />
-    <Compile Include="Assets\Scripts\floorTransport.cs" />
+    <Compile Include="Assets\Scripts\FloorManager.cs" />
     <Compile Include="Assets\Scripts\MarkerController.cs" />
-    <Compile Include="Assets\Scripts\placeDictionary.cs" />
-    <Compile Include="Assets\Scripts\SphereController.cs" />
-    <Compile Include="Assets\Scripts\stairMap.cs" />
-    <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\Navmesh.cginc" />
-    <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\Navmesh.shader" />
-    <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\NavmeshOutline.shader" />
-    <None Include="Assets\HolyShift\Shaders\FXWaterLowpoly.shader" />
-    <None Include="Assets\HolyShift\Shaders\WaterInclude.cginc" />
-    <None Include="Assets\HolyShift\readme.txt" />
-    <None Include="Assets\Plugins\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
-    <None Include="Assets\Plugins\AstarPathfindingProject\ExampleScenes\Materials\Projector Light.shader" />
-    <None Include="Assets\Plugins\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
-    <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\DotNetZip\DotNetZipLicense.txt" />
-    <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\dependencies.txt" />
-    <None Include="Assets\Plugins\AstarPathfindingProject\Readme.txt" />
-    <None Include="Assets\Plugins\AstarPathfindingProject\Readme_upgrading.txt" />
-    <None Include="Assets\Plugins\AstarPathfindingProject\link.xml" />
+    <None Include="Assets\Art\HolyShift\Shaders\FXWaterLowpoly.shader" />
+    <None Include="Assets\Art\HolyShift\Shaders\WaterInclude.cginc" />
+    <None Include="Assets\Art\HolyShift\readme.txt" />
     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
