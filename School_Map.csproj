@@ -334,7 +334,9 @@
     <Compile Include="Assets\Scripts\FloorManager.cs" />
     <Compile Include="Assets\Scripts\MarkerController.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
+    <Compile Include="Assets\Scripts\Node2.cs" />
     <Compile Include="Assets\Scripts\NodeManager.cs" />
+    <Compile Include="Assets\Scripts\Path.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\HolyShift\Shaders\FXWaterLowpoly.shader" />
